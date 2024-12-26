@@ -1,0 +1,4 @@
+Licencia:
+    El sistema de Seguimiento de Expedientes es un software Libre, el cual puede ser utilizado,       
+    distribuido o modificar su código fuente para realizar mejoras según sus necesidades.
+

@@ -1,0 +1,178 @@
+﻿<%@ Master Language="VB" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+
+   
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    
+
+<%
+    Dim util As New MvcCONGRE.Util
+%>
+        <title>
+            <%
+                Dim util2 As New MvcCONGRE.Util
+                Response.Write(util2.getTitle())
+            %>
+        </title>
+        
+       <link href="../../Content/css/Site.css" rel="stylesheet" type="text/css" />
+    
+   <link href="../../Content/theme/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" id="Linktheme" />
+   
+   
+   <style type="text/css">
+        .ui-layout-west .ui-jqgrid tr.jqgrow td { border-bottom: 0px none}
+        .ui-jqgrid .ui-userdata { 
+            height: 25px !important; /* default value in ui.jqgrid.CSS is 21px */
+            }
+
+            
+      
+
+
+
+       #lblUsuario
+       {
+           text-align: right;
+       }
+
+
+
+  
+
+   </style>
+   
+
+	
+    <%=util.getStyle() %>
+    
+    
+    
+     <%=util.getScript("Scripts/js/app/ui") %>
+     <%=util.getScript("Scripts/js/app/common") %>
+     
+     <%=util.getScript("Scripts/js/app/jqGrid") %>
+     <%=util.getScript("Scripts/js/app/tree") %>
+
+  
+      
+   
+
+<%
+    Dim jsController As String = ""
+    jsController = util.getScriptJSControllerAction
+    If Not String.IsNullOrEmpty(jsController) Then
+        Response.Write(jsController)
+    End If
+ %>
+
+
+   <script type="text/javascript">
+       var path = "<%=util.getPath %>",
+                pathImage = "<%=util.getPath %>" + 'content/img/';
+
+       $.jgrid.no_legacy_api = true;
+       $.jgrid.useJSON = true;
+
+       jQuery(document).ready(function () {
+
+
+           var tblaux;
+           //           $(".toggler").draggable();
+
+           jQuery.scriptPath = "<%=util.getPath %>";
+           jQuery.ajaxSettings.traditional = true;
+           jQuery.ajaxSetup({
+               cache: false,
+               error: function (request, status, error) {
+                   if (request.status == 408)
+                       window.open(obtenerContexto("view/common/log-out.jsp"), '_self');
+                   else
+                       htmlresult = $(request.responseText);
+
+                   if ($(htmlresult[1]).html() != undefined) {
+                       openDialogError("<b>Error de comunicaci\u00F3n.</b> <br/>Estado: " + status + "<br/> Detalle: " + $(htmlresult[1]).html());
+                       console.log($(htmlresult[1]).html());
+                   }
+                   else
+                       openDialogError("<b>Error de comunicaci\u00F3n.</b> <br/>Estado: " + status + "<br/> Detalle: " + error);
+
+                   console.log(request);
+                   console.log(status);
+                   console.log(error);
+
+               },
+               beforeSend: function (xhr, settings) {
+                   switch (settings.type) {
+                       //case "GET": settings.url += "&_ajaxcall_=1"; break;    
+                       //case "POST": settings.data += "&_ajaxcall_=1"; break;    
+                   }
+               }
+           });
+
+
+       });
+
+     
+
+
+        </script>
+   
+</head>   
+    <body >
+    
+    <%
+        Dim Tuser As String=""
+        If Not Session("DataUser") Is Nothing Then
+            Dim objUser As MvcCONGRE.DataUser
+            objUser = DirectCast(Session("DataUser"), MvcCONGRE.DataUser)
+		      Tuser = objUser.Tipo
+        End If
+    %>
+ <div class="page" style="border-radius:5px;">
+    <div class="header">
+    <table width="100%">
+    <tr>
+    <td  width="265px">
+       
+           
+                   <div style="border: 2px ridge #FFFFFF; margin: 12px;"> <asp:Image ID="Image1" runat="server" 
+                        ImageUrl="~/Content/img/logo_ministerio.png" /></div>
+
+              
+    </td>
+    <td>
+    <h2 style="color:White; font-size:30px;">  <%  Dim ut As New MvcCONGRE.Util
+                                Response.Write(ut.getTitle())
+                                %></h2>
+        
+    </td>
+    </tr>
+    </table>
+        
+     
+        </div>
+        <div class="main" >
+       
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">        
+                    </asp:ContentPlaceHolder>
+               
+         </div>
+    </div>
+
+
+
+<div class="ui-layout-south footer" style="color:Black"  id="south">
+    <% Html.RenderPartial("southView")%>
+</div> 
+ 
+
+        <% Html.RenderPartial("jqCargando")%>
+        <% Html.RenderPartial("jqDialog")%>
+   
+    </body>
+</html>
+

@@ -1,0 +1,1 @@
+﻿[Logged: 2021-12-07 11:16:51 AM] ORA-12514: TNS:listener does not currently know of service requested in connect descriptor

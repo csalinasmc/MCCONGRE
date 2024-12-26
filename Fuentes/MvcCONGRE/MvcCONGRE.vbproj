@@ -1,0 +1,726 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0FE45432-6B00-48C8-BB1F-A0C002D5837F}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MvcCONGRE</RootNamespace>
+    <AssemblyName>MvcCONGRE</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>MvcCONGRE.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>MvcCONGRE.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.Mvc" />
+    <Import Include="System.Web.Mvc.Ajax" />
+    <Import Include="System.Web.Mvc.Html" />
+    <Import Include="System.Web.Routing" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.vb" />
+    <Compile Include="App_Start\FilterConfig.vb" />
+    <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="App_Start\WebApiConfig.vb" />
+    <Compile Include="Controllers\AccesoController.vb" />
+    <Compile Include="Controllers\AccountController.vb" />
+    <Compile Include="Controllers\FileEL.vb" />
+    <Compile Include="Controllers\HomeController.vb" />
+    <Compile Include="Controllers\JqgridController.vb" />
+    <Compile Include="Controllers\RegistroController.vb" />
+    <Compile Include="Controllers\UtilController.vb" />
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="helpers\DataUser.vb" />
+    <Compile Include="helpers\Dialog.vb" />
+    <Compile Include="helpers\JsonHelper.vb" />
+    <Compile Include="helpers\Log.vb" />
+    <Compile Include="helpers\MyDataTableConverter.vb" />
+    <Compile Include="helpers\Util.vb" />
+    <Compile Include="helpers\Utilitarios.vb" />
+    <Compile Include="Models\AccountModels.vb" />
+    <Compile Include="Models\DataAdapterOracle.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="Content\css\content.css" />
+    <Content Include="Content\css\fg.menu.css" />
+    <Content Include="Content\css\fineuploader.css" />
+    <Content Include="Content\css\images\drop-no.gif" />
+    <Content Include="Content\css\images\elbow-end-minus-nl.gif" />
+    <Content Include="Content\css\images\elbow-end-minus.gif" />
+    <Content Include="Content\css\images\elbow-end-plus-nl.gif" />
+    <Content Include="Content\css\images\elbow-end-plus.gif" />
+    <Content Include="Content\css\images\elbow-end.gif" />
+    <Content Include="Content\css\images\elbow-line.gif" />
+    <Content Include="Content\css\images\elbow-minus-nl.gif" />
+    <Content Include="Content\css\images\elbow-minus.gif" />
+    <Content Include="Content\css\images\elbow-plus-nl.gif" />
+    <Content Include="Content\css\images\elbow-plus.gif" />
+    <Content Include="Content\css\images\elbow.gif" />
+    <Content Include="Content\css\images\folder-open.gif" />
+    <Content Include="Content\css\images\folder.gif" />
+    <Content Include="Content\css\images\leaf.gif" />
+    <Content Include="Content\css\images\s.gif" />
+    <Content Include="Content\css\images\_drop-no.gif" />
+    <Content Include="Content\css\jquery-ui-timepicker-addon.css" />
+    <Content Include="Content\css\jquery.contextMenu.css" />
+    <Content Include="Content\css\jquery.notty.css" />
+    <Content Include="Content\css\jquery.validity.css" />
+    <Content Include="Content\css\layout-default.css" />
+    <Content Include="Content\css\searchFilter.css" />
+    <Content Include="Content\css\Site.css" />
+    <Content Include="Content\css\tree\ext-all.css" />
+    <Content Include="Content\css\tree\TreeCheckNode.css" />
+    <Content Include="Content\css\ui.combobox.css" />
+    <Content Include="Content\css\ui.jqgrid.css" />
+    <Content Include="Content\css\ui.multiselect.css" />
+    <Content Include="Content\img\ajax_load.gif" />
+    <Content Include="Content\img\ambar.png" />
+    <Content Include="Content\img\arrow-down.gif" />
+    <Content Include="Content\img\arrow-up.gif" />
+    <Content Include="Content\img\arrow.gif" />
+    <Content Include="Content\img\azul.png" />
+    <Content Include="Content\img\b_drop.png" />
+    <Content Include="Content\img\calendar.gif" />
+    <Content Include="Content\img\casa.png" />
+    <Content Include="Content\img\celeste.png" />
+    <Content Include="Content\img\cerrar_alerta.jpg" />
+    <Content Include="Content\img\checked.png" />
+    <Content Include="Content\img\collapsed.gif" />
+    <Content Include="Content\img\cultural.png" />
+    <Content Include="Content\img\down.gif" />
+    <Content Include="Content\img\error.png" />
+    <Content Include="Content\img\expanded.gif" />
+    <Content Include="Content\img\find.png" />
+    <Content Include="Content\img\gobierno.png" />
+    <Content Include="Content\img\hospital.png" />
+    <Content Include="Content\img\ico_modificar.gif" />
+    <Content Include="Content\img\idown.png" />
+    <Content Include="Content\img\iglesia.png" />
+    <Content Include="Content\img\industria.png" />
+    <Content Include="Content\img\iup.png" />
+    <Content Include="Content\img\kuser.png" />
+    <Content Include="Content\img\loading.black.gif" />
+    <Content Include="Content\img\loading.gif" />
+    <Content Include="Content\img\loading8.gif" />
+    <Content Include="Content\img\logo.jpg" />
+    <Content Include="Content\img\logo_ministerio.png" />
+    <Content Include="Content\img\main-bg.gif" />
+    <Content Include="Content\img\main-bg_.gif" />
+    <Content Include="Content\img\marron.png" />
+    <Content Include="Content\img\mas.gif" />
+    <Content Include="Content\img\menos.gif" />
+    <Content Include="Content\img\museo.png" />
+    <Content Include="Content\img\naranja.png" />
+    <Content Include="Content\img\page_attach.png" />
+    <Content Include="Content\img\pencil.png" />
+    <Content Include="Content\img\rojo.png" />
+    <Content Include="Content\img\spinner_bar.gif" />
+    <Content Include="Content\img\tab_b.png" />
+    <Content Include="Content\img\tab_bt.png" />
+    <Content Include="Content\img\tab_l.png" />
+    <Content Include="Content\img\tab_lt.png" />
+    <Content Include="Content\img\tab_m.png" />
+    <Content Include="Content\img\tab_mt.png" />
+    <Content Include="Content\img\tab_r.png" />
+    <Content Include="Content\img\tab_rt.png" />
+    <Content Include="Content\img\terreno.png" />
+    <Content Include="Content\img\toggler_hide.png" />
+    <Content Include="Content\img\toggler_show.png" />
+    <Content Include="Content\img\up.gif" />
+    <Content Include="Content\img\verde.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\smoothness\images\animated-overlay.gif" />
+    <Content Include="Content\themes\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\smoothness\jquery-ui.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.all.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.base.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.button.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.core.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.menu.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.slider.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.theme.css" />
+    <Content Include="Content\themes\smoothness\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\smoothness\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\smoothness\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\smoothness\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\smoothness\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="packages.config" />
+    <Content Include="Scripts\js\acceso\index.js" />
+    <Content Include="Scripts\js\account\logon.js" />
+    <Content Include="Scripts\js\app\common\01_jquery.print.js" />
+    <Content Include="Scripts\js\app\common\02_fg.menu.js" />
+    <Content Include="Scripts\js\app\common\03_common.js" />
+    <Content Include="Scripts\js\app\common\04_validate.js" />
+    <Content Include="Scripts\js\app\common\05_jquery.pagination.js" />
+    <Content Include="Scripts\js\app\common\06_autoNumeric-1.6.2.js" />
+    <Content Include="Scripts\js\app\common\07_swfobject.js" />
+    <Content Include="Scripts\js\app\common\08_jquery.numeric.js" />
+    <Content Include="Scripts\js\app\common\10_browser.js" />
+    <Content Include="Scripts\js\app\common\11_dialog.js" />
+    <Content Include="Scripts\js\app\common\12_constant.js" />
+    <Content Include="Scripts\js\app\common\13_buspersonas.js" />
+    <Content Include="Scripts\js\app\common\14_toolbarButtonAdd.js" />
+    <Content Include="Scripts\js\app\exportxls\jquery-2.0.1.min.js" />
+    <Content Include="Scripts\js\app\exportxls\jquery.base64.js" />
+    <Content Include="Scripts\js\app\exportxls\jquery.btechco.excelexport.js" />
+    <Content Include="Scripts\js\app\exportxls\jquery.btechco.excelexport.min.js" />
+    <None Include="Scripts\js\app\exportxls\_references.js" />
+    <Content Include="Scripts\js\app\jqGrid\01_jquery.layout.js" />
+    <Content Include="Scripts\js\app\jqGrid\02_grid.locale-es.js" />
+    <Content Include="Scripts\js\app\jqGrid\03_ui.multiselect.js" />
+    <Content Include="Scripts\js\app\jqGrid\04_jquery.jqGrid.min.js" />
+    <Content Include="Scripts\js\app\jqGrid\05_jquery.tablednd.js" />
+    <Content Include="Scripts\js\app\jqGrid\06_jquery.contextMenu.js" />
+    <Content Include="Scripts\js\app\jqGrid\07_grid.addons.js" />
+    <Content Include="Scripts\js\app\jqGrid\08_grid.postext.js" />
+    <Content Include="Scripts\js\app\jqGrid\09_grid.setcolumns.js" />
+    <Content Include="Scripts\js\app\jqGrid\10_jquery.searchFilter.js" />
+    <Content Include="Scripts\js\app\jqGrid\11_jquery.ui.position.js" />
+    <Content Include="Scripts\js\app\tree\01_yui-utilities.js" />
+    <Content Include="Scripts\js\app\tree\02_ext-yui-adapter.js" />
+    <Content Include="Scripts\js\app\tree\03_ext-all.js" />
+    <Content Include="Scripts\js\app\tree\04_AsyncTreeNode.js" />
+    <Content Include="Scripts\js\app\tree\05_TreeCheckNode.js" />
+    <Content Include="Scripts\js\app\ui\01_jquery-1.8.2.min.js" />
+    <Content Include="Scripts\js\app\ui\02_jquery-ui-1.10.3.custom.js" />
+    <Content Include="Scripts\js\app\ui\03_jquery-ui-combobox.js" />
+    <Content Include="Scripts\js\app\ui\04_jquery.ui.datepicker-es.js" />
+    <Content Include="Scripts\js\app\ui\05_jquery-ui-timepicker-addon.js" />
+    <Content Include="Scripts\js\app\ui\06_jquery.notty.js" />
+    <Content Include="Scripts\js\app\ui\07_jquery.validity.js" />
+    <Content Include="Scripts\js\app\ui\08_jquery.validity.lang.es.js" />
+    <Content Include="Scripts\js\app\ui\09_jquery.fileupload.js" />
+    <Content Include="Scripts\js\registro\Documentos.js" />
+    <Content Include="Scripts\js\registro\Movimientos.js" />
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.actualizarAdministradoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.actualizarInformacionEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.actualizarInformacionPersonaEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.aplicativoTemp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.buscarEmpresaPorNroRucResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.buscarUsuarioEmpresaPorDocumentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.buscarUsuarioPorDocumentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.cambiarContrasenaUsuarioEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.cambiarContrasenaUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.DesbloquearUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.DeshabilitarUsuarioEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.DeshabilitarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.eliminatodosperfilesaplicativosusuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.empresaTemp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.HabilitarUsuarioEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.HabilitarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.insertarCorreoTelefonoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.insertarEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.insertarPerfilUsuarioEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.insertarPerfilUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.insertarPersonaEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.insertarPersonaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.insertarUsuarioEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.insertarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerAdministradoPorNombreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerEmpresaPorCodigoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerEmpresaPorCodigoyAplicativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerEmpresaPorNombreyAplicativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerPerfilUsuarioEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerPerfilUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerPersonaPorCodigoEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerPersonaPorCodigoEmpresayAplicativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerPersonaPorDocumentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerSesionEmpresaPorNumeroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerSesionPorNumeroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerUsuarioEmpresaPorLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.leerUsuarioPorLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.listarAplicativoPorCodigoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.listarAplicativoPorUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.listarAplicativosActivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.listarPerfilesPorAplicativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.listarPerfilesxUsuarioAplicativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.perfilUsuarioTemp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.personaTemp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.sesionIniciarWebEmpresaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.sesionIniciarWebResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.sesionTemp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\MvcCONGRE.ServiceReference1.usuarioTemp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ServiceReference1\SessionService.wsdl" />
+    <None Include="Service References\ServiceReference1\SessionService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Shared\vmpDocuments.Master" />
+    <Content Include="Views\Shared\vmpInicio.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\_references.js" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <Content Include="Views\Acceso\CambiarPassw.aspx" />
+    <Content Include="Views\Acceso\Index.aspx" />
+    <Content Include="Views\Account\ChangePassword.aspx" />
+    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\Account\LogOn.aspx" />
+    <Content Include="Views\Account\Register.aspx" />
+    <Content Include="Views\Home\About.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Registro\Documentos.aspx" />
+    <Content Include="Views\Registro\Index.aspx" />
+    <Content Include="Views\Registro\Movimientos.aspx" />
+    <Content Include="Views\Shared\compEmpresa.ascx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\jqCargando.ascx" />
+    <Content Include="Views\Shared\jqDialog.ascx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Views\Shared\menuView.ascx" />
+    <Content Include="Views\Shared\northView.ascx" />
+    <Content Include="Views\Shared\southView.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.vbhtml" />
+    <Content Include="Views\Shared\Error.vbhtml" />
+    <Content Include="Views\Shared\_Layout.vbhtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>13177</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:13177/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

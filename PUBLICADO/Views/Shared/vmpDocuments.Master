@@ -1,0 +1,446 @@
+﻿<%@ Master Language="VB" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <%
+        Dim util As New DocumentsCR.Util
+    %>
+    <title>
+        <%
+            Dim util2 As New DocumentsCR.Util
+            Response.Write(util2.getTitle())
+        %>
+    </title>
+    <link href="../../Content/css/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/theme/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"
+        id="Linktheme" />
+    <style type="text/css">
+        .icon_attach
+        {
+            background-image: url(../../Content/img/page_attach.png) !important;
+            width: 16px;
+            height: 16px;
+        }
+        
+        
+        
+        .ui-layout-west .ui-jqgrid tr.jqgrow td
+        {
+            border-bottom: 0px none;
+        }
+        .ui-jqgrid .ui-userdata
+        {
+            height: 25px !important; /* default value in ui.jqgrid.CSS is 21px */
+        }
+        
+        
+        
+        
+        
+        
+        #lblUsuario
+        {
+            text-align: right;
+        }
+        
+        .HeaderButton
+        {
+            display: none;
+        }
+        
+        .toggler
+        {
+            text-align: center;
+            bottom: 0px;
+            right: 5px;
+            position: absolute;
+            width: 350px;
+            height: 190px;
+            padding: 0.4em;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+        #effect h3
+        {
+            margin: 0;
+            padding: 6px;
+            text-align: center;
+            background-color: #424242;
+            color: White;
+            font-weight: bold;
+        }
+        #alerta
+        {
+            width: 100%;
+            height: 170px;
+            overflow: auto;
+        }
+        
+        .menuAct span
+        {
+            background-color: #BD0000;
+            color: White;
+        }
+        
+        ul li button span
+        {
+            font-style: italic;
+            font-weight: bold;
+            text-align: left;
+        }
+        .boderHide
+        {
+            border: none;
+        }
+    </style>
+    <%=util.getStyle() %>
+    <%=util.getScript("Scripts/js/app/ui") %>
+    <%=util.getScript("Scripts/js/app/common") %>
+    <%=util.getScript("Scripts/js/app/jqGrid") %>
+    <%=util.getScript("Scripts/js/app/tree") %>
+    <%
+        Dim jsController As String = ""
+        jsController = util.getScriptJSControllerAction
+        If Not String.IsNullOrEmpty(jsController) Then
+            Response.Write(jsController)
+        End If
+    %>
+    <script type="text/javascript">
+
+        var path = "<%=util.getPath %>",
+                pathImage = "<%=util.getPath %>" + 'content/img/',
+                pathFiles = "<%=util.getPathFiles %>";
+
+        $.jgrid.no_legacy_api = true;
+        $.jgrid.useJSON = true;
+
+        function dataMenu() {
+            var menu = new Array
+                                (
+            //                                     { id: 10, nombre: "Entidad", parentid: null },
+                                    {id: 11, nombre: "Congreso de la República", parentid: null },
+                                    { id: 12, nombre: "Ministerio de Relaciones Exteriores", parentid: null }
+                                );
+            return menu;
+        }
+
+        function menu(obj, data) {
+            var ul = $("<ul></ul>");
+            generaitem(data, null, ul, 1);
+            $(obj).append(ul);
+
+            $('li button').button().click(function () {
+
+                $('li button').removeClass('menuAct');
+                $(this).addClass('menuAct');
+                idmenu = this.id;
+                textmenuitem = $(this).text();
+                ProcesoBuscar(this.id);
+            });
+
+            $('.MenuTop').mouseover(function () {
+                var submenu = $('#SubMenu' + this.id);
+                submenu.show();
+            }).mouseleave(function () {
+                var submenu = $('#SubMenu' + this.id);
+                submenu.hide();
+            });
+
+        }
+
+        function generaitem(data, parentid, ul, root) {
+
+            var li;
+
+            for (var i = 0; i < data.length; i++) {
+
+                if (parentid == data[i].MENUPADRE) {
+                    if (root == 1)
+                        li = $("<li class='MenuTop'  id='" + data[i].NCODIGOMENU + "' style='float:left;padding:0px;margin:5px;'><button id='" + data[i].NCODIGOMENU + "' style='width:auto;'>" + data[i].SNOMBREMENU + "</button></li>");
+                    else
+                        li = $("<li class='MenuItem' id='" + data[i].NCODIGOMENU + "' style='padding:0px;margin:5px;'><button id='" + data[i].NCODIGOMENU + "' style='width:100%'>" + data[i].SNOMBREMENU + "</button></li>");
+
+                    var auxData = new Array();
+                    var idx = 0;
+
+                    for (var j = 0; j < data.length; j++) {
+                        if (data[i].NCODIGOMENU == data[j].MENUPADRE) {
+                            auxData[idx] = data[j];
+                            idx++;
+                        }
+
+                    }
+
+                    if (auxData.length > 0) {
+                        var ulx = $("<ul style='display:none;position:absolute; z-index:999' id='SubMenu" + data[i].NCODIGOMENU + "' class='ui-widget-content ui-widget-header ui-corner-all'></ul>");
+                        generaitem(auxData, data[i].NCODIGOMENU, ulx, 0);
+                        li.append(ulx);
+                    }
+
+                    ul.append(li);
+
+                }
+            }
+
+            ul.append("<div style='clear: both'></div>");
+            return ul;
+        }
+
+
+        var idmenu = -1;
+        var textmenuitem = "";
+        jQuery(document).ready(function () {
+
+            var p = {}; p.NCODIGOPERFIL = $("#txhidperfil").val();
+            $.post(path + "registro/getmenu", p, function (data) {
+                menu("#jqxMenu", data);
+                setTimeout(function () {
+                    var b = $("li button")[0];
+                    $(b).click();
+                }, 500);
+            }, 'json');
+
+
+            var tblaux;
+            //           $(".toggler").draggable();
+
+            jQuery.scriptPath = "<%=util.getPath %>";
+            jQuery.ajaxSettings.traditional = true;
+            jQuery.ajaxSetup({
+                cache: false,
+                error: function (request, status, error) {
+                    if (request.status == 408)
+                        window.open(obtenerContexto("view/common/log-out.jsp"), '_self');
+                    else
+                        htmlresult = $(request.responseText);
+
+                    if ($(htmlresult[1]).html() != undefined) {
+                        openDialogError("<b>Error de comunicaci\u00F3n.</b> <br/>Estado: " + status + "<br/> Detalle: " + $(htmlresult[1]).html());
+                        console.log($(htmlresult[1]).html());
+                    }
+                    else
+                        openDialogError("<b>Error de comunicaci\u00F3n.</b> <br/>Estado: " + status + "<br/> Detalle: " + error);
+
+                    console.log(request);
+                    console.log(status);
+                    console.log(error);
+
+                },
+                beforeSend: function (xhr, settings) {
+                    switch (settings.type) {
+                        //case "GET": settings.url += "&_ajaxcall_=1"; break;                   
+                        //case "POST": settings.data += "&_ajaxcall_=1"; break;                   
+                    }
+                }
+            });
+
+
+
+        });
+
+     
+
+
+    </script>
+</head>
+<body>
+    <%
+        
+        
+        Dim Tuser As String = ""
+        If Not Session("DataUser") Is Nothing Then
+            Dim objUser As DocumentsCR.DataUser
+            objUser = DirectCast(Session("DataUser"), DocumentsCR.DataUser)
+            Tuser = objUser.Tipo
+        Else
+            Dim util As New DocumentsCR.Util
+            Response.Redirect(util.getPath + "Acceso/Index")
+        End If
+    %>
+    <div class="page" style="border-radius: 5px;">
+        <div class="header">
+            <table width="100%">
+                <tr>
+                    <td width="265px" rowspan="2">
+                        <div style="border: 2px ridge #FFFFFF; margin: 12px;">
+                            <asp:Image ID="Image1" runat="server" ImageUrl="~/Content/img/logo_ministerio.png" /></div>
+                    </td>
+                    <td rowspan="2">
+                        <h2 style="color: White; font-size: 30px; width: 600px">
+                            <%  Dim ut As New DocumentsCR.Util
+                                Response.Write(ut.getTitle())
+                                %></h2>
+                        <span style="color: #FFFFFF;">Versión 0.0.0.0 </span>
+                    </td>
+                    <td valign="bottom" colspan="3" style="text-align: justify">
+                        <label id="lblUsuario" style="color: #FFFFFF; font-style: italic; text-transform: capitalize">
+                            <%  If Not Session("DataUser") Is Nothing Then
+                                    Dim objUser As DocumentsCR.DataUser = DirectCast(Session("DataUser"), DocumentsCR.DataUser)
+                                    Response.Write("Bienvenido: " & objUser.NomPers.ToString.ToLower)
+                                End If
+                            %>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <label id="lblNow" style="color: #FFFFFF; font-style: italic;">
+                            <%  Dim utility As New DocumentsCR.Util
+            
+                                Response.Write(utility.LetraCapital(System.DateTime.Now.ToLongDateString, "de"))
+                            %>
+                        </label>
+                    </td>
+                    <td valign="top">
+                        <label id="lblCambiarClave" style="color: #FFFFFF; text-decoration: underline; font-style: italic;
+                            cursor: pointer;">
+                            Cambiar Clave</label>
+                    </td>
+                    <td valign="top">
+                        <label id="lblCerrar" style="color: #FFFFFF; text-decoration: underline; font-style: italic;
+                            cursor: pointer;">
+                            Cerrar Sesión</label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="padding: 15px;">
+            <div id="jqxMenu" class="ui-widget-content ui-widget-header ui-corner-all " style="height: auto">
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div class="ui-layout-south footer" style="color: Black" id="south">
+        <% Html.RenderPartial("southView")%>
+    </div>
+    <div class="toggler" id="divalerta">
+        <div id="effect" class="ui-widget-content ui-corner-all">
+            <h3>
+                <label id="lblperiodo">
+                </label>
+                <img id="iconalerta" style="right: 10px; position: absolute; cursor: pointer;" onclick="close_alerta();" />
+            </h3>
+            <div id="alerta" style="padding-left: 10px; width: auto">
+                <table cellspacing="5" style="text-align: left">
+                    <tr>
+                        <td>
+                            <img alt="" src="../../Content/img/azul.png" id="iconazul" />
+                        </td>
+                        <td>
+                            Finalizados
+                        </td>
+                        <td>
+                            =
+                        </td>
+                        <td style="text-align: right; width: 40px; padding-right: 5px">
+                            <label id="cant1" style="width: 40px">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img alt="" src="../../Content/img/rojo.png" id="iconrojo" />
+                        </td>
+                        <td>
+                            Vencidos (mayor 15 días)
+                        </td>
+                        <td>
+                            =
+                        </td>
+                        <td style="text-align: right; width: 40px; padding-right: 5px">
+                            <label id="cant2">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img alt="" src="../../Content/img/naranja.png" id="iconnaranja" />
+                        </td>
+                        <td>
+                            Vencen hoy (igual a 15 días)
+                        </td>
+                        <td>
+                            =
+                        </td>
+                        <td style="text-align: right; width: 40px; padding-right: 5px">
+                            <label id="cant3">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img alt="" src="../../Content/img/ambar.png" id="iconambar" />
+                        </td>
+                        <td>
+                            Por vencer (entre 10 y 14 días)
+                        </td>
+                        <td>
+                            =
+                        </td>
+                        <td style="text-align: right; width: 40px; padding-right: 5px">
+                            <label id="cant4">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img alt="" src="../../Content/img/verde.png" id="iconverde" />
+                        </td>
+                        <td>
+                            Ingresos nuevos (entre 0 y 9 días)
+                        </td>
+                        <td>
+                            =
+                        </td>
+                        <td style="text-align: right; width: 40px; padding-right: 5px">
+                            <label id="cant5">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img alt="" src="../../Content/img/celeste.png" id="iconceleste" />
+                        </td>
+                        <td>
+                            Ingresaron hoy
+                        </td>
+                        <td>
+                            =
+                        </td>
+                        <td style="text-align: right; width: 40px; padding-right: 5px">
+                            <label id="cant6">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td style="text-align: right">
+                            TOTAL
+                        </td>
+                        <td>
+                            =
+                        </td>
+                        <td style="text-align: right; width: 40px; border-top-style: solid; padding-right: 5px">
+                            <label id="lbltotalexp">
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <% Html.RenderPartial("jqCargando")%>
+    <% Html.RenderPartial("jqDialog")%>
+    <input type="hidden" id="txhiduser" value="<%= ViewData("iduser") %>" />
+    <input type="hidden" id="txhidperfil" value="<%= ViewData("idperfil") %>" />
+</body>
+</html>

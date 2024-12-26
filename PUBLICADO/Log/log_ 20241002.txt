@@ -1,0 +1,9 @@
+﻿[Logged: 2024-10-02 12:46:36 PM] ORA-06550: línea 1, columna 7:
+PLS-00103: Encountered the symbol "." when expecting one of the following:
+
+   ( begin case declare exit for goto if loop mod null pragma
+   raise return select update while with <an identifier>
+   <a double-quoted delimited-identifier> <a bind variable> <<
+   continue close current delete fetch lock insert open rollback
+   savepoint set sql execute commit forall merge pipe purge
+The symbol "<an identifier>" was substituted for "." to continue.
